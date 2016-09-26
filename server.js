@@ -43,14 +43,16 @@ if (isDeveloping) {
   app.use(webpackHotMiddleware(compiler));
 
   // mocks
-  app.use(route.all('*', function* (path, next) {
+  app.use(route.all('*', function* (_path, next) {
     try {
-      let filePath = path + '.' + this.req.method + '.json';
+      let filePath = _path + '.' + this.req.method + '.json';
 
       fs.accessSync(__dirname + '/mocks' + filePath, fs.R_OK);
       yield send(this, filePath, { root: __dirname + '/mocks' });
     } catch (e) {
-      yield next;
+      // yield next;
+      this.set('Content-Type','text/html');
+      this.body = this.webpack.fileSystem.readFileSync(path.join(config.output.path, 'index.html'));
     }
   }));
 } else {

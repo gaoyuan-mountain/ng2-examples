@@ -1,15 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 
+import { HttpModule } from '@angular/http';
+
 import { AppComponent } from './app.component';
+import { LoginModule } from './login/login.module';
+import { CoreModule } from './core/core.module';
+import { routing } from './app.routing';
+
+import '../../public/styles/common.scss';
 
 @NgModule({
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    LoginModule,
+    CoreModule.forRoot({username: ''}),
+    routing
   ],
-  declarations: [
-    AppComponent
-  ],
+  declarations: [ AppComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
