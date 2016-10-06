@@ -1,0 +1,8 @@
+{
+  "msg": "success",
+  "code": 0,
+  "data": [
+    { "id": 1, "name": "Batman" },
+    { "id": 2, "name": "Superman" }
+  ]
+}
