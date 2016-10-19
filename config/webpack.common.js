@@ -1,6 +1,8 @@
 var webpack = require('webpack');
+var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var precss = require('precss');
 var autoprefixer = require('autoprefixer')
 var helpers = require('./helpers');
@@ -61,10 +63,19 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    })
+    }),
+
+    new CopyWebpackPlugin([{
+      from: root('src/public')
+    }])
   ],
 
   postcss: function () {
     return [precss, autoprefixer({ browsers: ['last 2 versions'] })];
   }
 };
+
+function root(args) {
+  args = Array.prototype.slice.call(arguments, 0);
+  return path.join.apply(path, [__dirname].concat(args));
+}

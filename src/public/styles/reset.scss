@@ -1,9 +1,12 @@
 * {
   box-sizing: border-box;
 }
-html, body, p {
+html, body, p, h1 {
   padding: 0;
   margin: 0;
+  color: #666;
+  font-family: Arial;
+  font-weight: normal;
 }
 html {
   font-size: 625%;

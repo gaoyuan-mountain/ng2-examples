@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserService } from '../core/user.service';
 
@@ -10,16 +11,18 @@ import { UserService } from '../core/user.service';
   ]
 })
 export class LoginComponent {
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   login(username: string, password: string) {
     this.userService.login(username, password)
       .subscribe(
         (res) => {
-          console.log(res);
+          if(res.username) {
+            this.router.navigate(['hero']);
+          }
         },
         (error) => {
-
+          console.log('login failed');
         }
       )
   }
