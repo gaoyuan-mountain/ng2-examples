@@ -1,5 +1,5 @@
 <div class="heroes">
   <div class="hero" *ngFor='let hero of heroes'>
-    <img src="/images/heroes/{{ hero.name }}.png" />
+    <img [src]="getHeroAvantar(hero)" />
   </div>
 </div>
