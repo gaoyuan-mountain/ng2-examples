@@ -28,11 +28,8 @@ export class HeroComponent implements OnInit {
       }
     )
   }
-<<<<<<< HEAD
-
+  
   getHeroAvantar(hero: any): string {
     return require(`../../public/images/heroes/${ hero.name }.png`);
   }
-=======
->>>>>>> 5c97841573d0c9b6e7b1adebd81fc2318f37f209
 }
